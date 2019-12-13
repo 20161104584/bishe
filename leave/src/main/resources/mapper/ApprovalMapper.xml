@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.student.leave.dao.ApprovalMapper" >
+    <resultMap id="BaseResultMap" type="com.student.leave.model.Approval">
+        <id column="id" property="id"/>
+        <result column="student_id" property="studentId"/>
+        <result column="start_time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+        <result column="days" property="days"/>
+        <result column="reason" property="reason"/>
+        <result column="teacher_id" property="teacherId"/>
+        <result column="leader_id" property="leaderId"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="result" property="result"/>
+    </resultMap>
+
+</mapper>

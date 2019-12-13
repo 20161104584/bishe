@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.student.leave.dao.StudentMapper" >
+    <resultMap id="BaseResultMap" type="com.student.leave.model.Student">
+        <id column="id" property="id"/>
+        <result column="num" property="num"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="avatar" property="avatar"/>
+    </resultMap>
+
+</mapper>
