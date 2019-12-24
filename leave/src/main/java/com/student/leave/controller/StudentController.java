@@ -1,9 +1,12 @@
 package com.student.leave.controller;
 
+import com.student.leave.dao.StudentMapper;
+import com.student.leave.model.Student;
 import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
 import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,9 +23,20 @@ import java.util.UUID;
 @RequestMapping("/student")
 public class StudentController {
 
+    @Autowired
+    private StudentMapper studentMapper;
+
     @RequestMapping("/login-page")
     public String loginPage() {
         return "student/login-page";
+    }
+
+    @ResponseBody
+    @RequestMapping("/register")
+    public String register(Student student) {
+        student.setId(UUID.randomUUID().toString());
+        studentMapper.insert(student);
+        return "SUCCESS";
     }
 
     @ResponseBody

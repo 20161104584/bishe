@@ -9,4 +9,10 @@
         <result column="avatar" property="avatar"/>
     </resultMap>
 
+    <insert id="insert">
+        insert into t_student values (
+        #{id},#{num},#{name},#{password},#{avatar}
+        );
+    </insert>
+
 </mapper>
