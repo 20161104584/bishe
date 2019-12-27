@@ -12,7 +12,15 @@
     <insert id="insert">
         insert into t_student values (
         #{id},#{num},#{name},#{password},#{avatar}
-        );
+        )
     </insert>
+
+    <select id="getByNum" resultMap="BaseResultMap">
+        select
+        *
+        from
+        t_student
+        where num = #{number}
+    </select>
 
 </mapper>

@@ -10,6 +10,12 @@
 </head>
 
 <body>
+<%
+    String loginInfo = (String) request.getAttribute("loginInfo");
+    if (loginInfo == null) {
+        loginInfo = "";
+    }
+%>
 <section class="hero-area">
     <div class="overlay"></div>
     <div class="container">
@@ -29,13 +35,14 @@
                         <div class="form-group" style="float:right">
                             <a style="font-size:12px;color:#2196f3;" onclick="openRegister()">Register</a>
                         </div>
-                        <button class="btn btn-general btn-blue" role="button"><i fa fa-right-arrow></i>Login</button>
+                        <button class="btn btn-general btn-blue" type="button" onclick="login()"><i fa fa-right-arrow></i>Login</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<input type="hidden" id="loginInfo" value="<%=loginInfo%>" />
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -157,17 +164,37 @@
                 avatar: avatar
             },
             success: function(ret) {
-                if (ret == "ERROR") {
-                    alert("注册失败");
-                } else {
+                if (ret == "SUCCESS") {
                     alert("注册成功");
                     window.location.reload();
+                } else {
+                    alert(ret);
                 }
             },
             error: function(res){
                 alert("操作失败，请重新操作！");
             }
         });
+    }
+
+    // 判断是否需要在登陆页面给提示
+    $(document).ready(function() {
+        var loginInfo = $("#loginInfo").val();
+        if (loginInfo != undefined && loginInfo != "") {
+            alert(loginInfo);
+            $("#loginInfo").val("");
+        }
+    });
+    // 登陆校验
+    function login() {
+        var number = $("#number").val();
+        var password = $("#password").val();
+        if (number == "" || password == "") {
+            alert("学号或密码不能为空");
+            return;
+        }
+        window.location.href = "/leave/student/login-check?number="
+            + number + "&password=" + password;
     }
 </script>
 </body>
