@@ -69,8 +69,8 @@
                     <div class="form-group">
                         <input type="file" id="img" name="img" onchange="sendChange()">
                         <input type="submit" style="opacity:0" id="send">
-                        <img id="imageShow" src="/leave/student/upload/1.png" width="40px" height="40px"/>
-                        <input type="hidden" id="register_avatar" value="1.png"/>
+                        <img id="imageShow" src="/leave/student/upload/avatar-1.jpg" width="40px" height="40px"/>
+                        <input type="hidden" id="register_avatar" value="avatar-1.jpg"/>
                     </div>
                 </form>
             </div>

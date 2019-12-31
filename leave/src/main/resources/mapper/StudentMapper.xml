@@ -23,4 +23,12 @@
         where num = #{number}
     </select>
 
+    <select id="getById" resultMap="BaseResultMap">
+        select
+        *
+        from
+        t_student
+        where id = #{studentId}
+    </select>
+
 </mapper>

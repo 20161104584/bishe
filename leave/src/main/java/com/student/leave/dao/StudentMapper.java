@@ -8,4 +8,6 @@ public interface StudentMapper {
     void insert(Student student);
 
     Student getByNum(String number);
+
+    Student getById(String studentId);
 }

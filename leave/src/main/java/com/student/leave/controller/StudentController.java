@@ -46,7 +46,11 @@ public class StudentController {
     }
 
     @RequestMapping("/main-page")
-    public String mainPage() {
+    public String mainPage(HttpServletRequest request) {
+        String studentId = (String) request.getSession().getAttribute("student_id");
+        // 获得个人信息
+        Student student = studentMapper.getById(studentId);
+        request.setAttribute("student", student);
         return "student/main-page";
     }
 
