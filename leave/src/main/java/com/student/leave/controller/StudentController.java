@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.URLEncoder;
 import java.util.UUID;
@@ -52,6 +53,14 @@ public class StudentController {
         Student student = studentMapper.getById(studentId);
         request.setAttribute("student", student);
         return "student/main-page";
+    }
+
+    @ResponseBody
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("student_id");
+        return "SUCCESS";
     }
 
     @ResponseBody

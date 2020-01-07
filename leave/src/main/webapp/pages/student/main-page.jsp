@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Bootstrap Admin Template </title>
+    <title>学生首页 </title>
     <link rel="stylesheet" href="/leave/statics/css/bootstrap.min.css">
     <link rel="stylesheet" href="/leave/statics/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/leave/statics/css/font-icon-style.css">
@@ -36,7 +36,7 @@
                         <li>
                             <a rel="nofollow" href="profile.html" class="dropdown-item">
                                 <div class="notification">
-                                    <div class="notification-content"><i class="fa fa-power-off"></i>Logout</div>
+                                    <div class="notification-content" onclick="logout()"><i class="fa fa-power-off"></i>Logout</div>
                                 </div>
                             </a>
                         </li>
@@ -71,6 +71,27 @@
 <script src="/leave/statics/js/popper/popper.min.js"></script>
 <script src="/leave/statics/js/bootstrap.min.js"></script>
 <script src="/leave/statics/js/jquery.validate.min.js"></script>
+<script language="JavaScript">
+    function logout() {
+        $.ajax({
+            url: "/leave/student/logout",
+            type: "POST",
+            dataType: "text",
+            data: {
+            },
+            success: function(ret) {
+                if (ret == "ERROR") {
+                    alert("退出失败");
+                } else {
+                    window.location.href = "/leave/student/login-page";
+                }
+            },
+            error: function(res){
+                alert("操作失败，请重新操作！");
+            }
+        });
+    }
+</script>
 </body>
 
 </html>
