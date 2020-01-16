@@ -64,12 +64,12 @@
                     </div>
                     <div class="form-group">
                         <label for="register_password" class="col-form-label">密码:</label>
-                        <input type="text" class="form-control" id="register_password">
+                        <input type="password" class="form-control" id="register_password">
                     </div>
                     <div class="form-group">
                         <input type="file" id="img" name="img" onchange="sendChange()">
                         <input type="submit" style="opacity:0" id="send">
-                        <img id="imageShow" src="/leave/student/upload/avatar-1.jpg" width="40px" height="40px"/>
+                        <img id="imageShow" src="/leave/head/upload/avatar-1.jpg" width="40px" height="40px"/>
                         <input type="hidden" id="register_avatar" value="avatar-1.jpg"/>
                     </div>
                 </form>
@@ -102,7 +102,7 @@
             return;
         }
         $.ajax({
-            url: '/leave/student/multiUpload',
+            url: '/leave/head/multiUpload',
             type: 'POST',
             cache: false,
             data: formData,
@@ -110,8 +110,8 @@
             contentType: false,
             success:function(data){
                 if (data != "ERROR") {
-                    $("#imageShow").attr("src", "/leave/student/upload/" + data);
-                    $("#avatar").val(data);
+                    $("#imageShow").attr("src", "/leave/head/upload/" + data);
+                    $("#register_avatar").val(data);
                 } else {
                     alert("上传失败");
                 }

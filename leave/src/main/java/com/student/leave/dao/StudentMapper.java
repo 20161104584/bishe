@@ -10,4 +10,6 @@ public interface StudentMapper {
     Student getByNum(String number);
 
     Student getById(String studentId);
+
+    void saveInfo(Student student);
 }

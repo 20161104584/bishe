@@ -31,4 +31,14 @@
         where id = #{studentId}
     </select>
 
+    <update id="saveInfo">
+        update
+        t_student
+        set
+        name = #{name},
+        password = #{password},
+        avatar = #{avatar}
+        where id = #{id}
+    </update>
+
 </mapper>
