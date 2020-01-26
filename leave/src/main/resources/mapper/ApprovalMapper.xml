@@ -14,6 +14,20 @@
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
         <result column="result" property="result"/>
+        <result column="student_name" property="studentName"/>
+        <result column="teacher_name" property="teacherName"/>
+        <result column="leader_name" property="leaderName"/>
     </resultMap>
+
+    <select id="getByStudentId" resultMap="BaseResultMap">
+        select
+        app.*,
+        tea.name teacher_name,
+        lea.name leader_name
+        from t_approval app
+        left join t_teacher tea on app.teacher_id = tea.id
+        left join t_leader lea on app.leader_id = lea.id
+        where app.student_id = #{studentId}
+    </select>
 
 </mapper>

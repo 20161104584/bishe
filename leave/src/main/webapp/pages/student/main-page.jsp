@@ -64,20 +64,18 @@
         </div>
         <hr>
         <ul class="list-unstyled">
-            <li> <a href="chart.html"> <i class="fa fa-bar-chart"></i>Chart </a></li>
+            <li> <a href="chart.html"> <i class="fa fa-bar-chart"></i>请假列表 </a></li>
         </ul>
     </nav>
 
-    <div class="content-inner">
         <iframe id="mainFrame" name="mainFrame" frameborder="no"
-                scrolling="no" src="/pigeon/admin/activity-list-page"></iframe>
-    </div>
+                scrolling="no" src="/leave/student/approval-list"></iframe>
 </div>
 <div class="modal fade" id="registerModal" style="z-index: 10000;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">学生注册</h5>
+                <h5 class="modal-title" id="exampleModalLabel">个人信息</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

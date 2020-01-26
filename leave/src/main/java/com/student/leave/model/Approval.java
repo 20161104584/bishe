@@ -16,6 +16,9 @@ public class Approval {
     private Date createTime;
     private Date updateTime;
     private String result;
+    private String studentName;
+    private String teacherName;
+    private String leaderName;
 
     public String getId() {
         return id;
@@ -111,5 +114,29 @@ public class Approval {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getStudentName() {
+        return studentName;
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+    }
+
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
+    }
+
+    public String getLeaderName() {
+        return leaderName;
+    }
+
+    public void setLeaderName(String leaderName) {
+        this.leaderName = leaderName;
     }
 }

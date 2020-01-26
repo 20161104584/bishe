@@ -1,6 +1,8 @@
 package com.student.leave.controller;
 
+import com.student.leave.dao.ApprovalMapper;
 import com.student.leave.dao.StudentMapper;
+import com.student.leave.model.Approval;
 import com.student.leave.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.URLEncoder;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -21,6 +24,8 @@ public class StudentController {
 
     @Autowired
     private StudentMapper studentMapper;
+    @Autowired
+    private ApprovalMapper approvalMapper;
 
     @RequestMapping("/login-page")
     public String loginPage(HttpServletRequest request) {
@@ -53,6 +58,15 @@ public class StudentController {
         Student student = studentMapper.getById(studentId);
         request.setAttribute("student", student);
         return "student/main-page";
+    }
+
+    @RequestMapping("/approval-list")
+    public String approvalList(HttpServletRequest request) {
+        String studentId = (String) request.getSession().getAttribute("student_id");
+        // 获得个人所有的请假数据
+        List<Approval> approvalList = approvalMapper.getByStudentId(studentId);
+        request.setAttribute("approvalList", approvalList);
+        return "student/approval-list";
     }
 
     @ResponseBody
