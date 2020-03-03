@@ -1,9 +1,12 @@
 package com.student.leave.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.student.leave.dao.ApprovalMapper;
 import com.student.leave.dao.StudentMapper;
+import com.student.leave.dao.TeacherMapper;
 import com.student.leave.model.Approval;
 import com.student.leave.model.Student;
+import com.student.leave.model.Teacher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
@@ -15,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.*;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,6 +32,8 @@ public class StudentController {
     private StudentMapper studentMapper;
     @Autowired
     private ApprovalMapper approvalMapper;
+    @Autowired
+    private TeacherMapper teacherMapper;
 
     @RequestMapping("/login-page")
     public String loginPage(HttpServletRequest request) {
@@ -66,7 +74,36 @@ public class StudentController {
         // 获得个人所有的请假数据
         List<Approval> approvalList = approvalMapper.getByStudentId(studentId);
         request.setAttribute("approvalList", approvalList);
+        // 获得所有的老师信息
+        List<Teacher> teacherList = teacherMapper.getAllTeacher();
+        request.setAttribute("teacherList", teacherList);
         return "student/approval-list";
+    }
+
+    @ResponseBody
+    @RequestMapping("/save-approval")
+    public String saveApproval(HttpServletRequest request, Approval approval) throws ParseException {
+        int days = getDays(approval.getStartTime(), approval.getEndTime());
+        approval.setDays(days+1);
+        // 通过student是否有id，来判断是新增还是更新
+        if (StringUtils.isEmpty(approval.getId())) {
+            // 新增操作
+            approval.setId(UUID.randomUUID().toString());
+            String studentId = (String) request.getSession().getAttribute("student_id");
+            approval.setStudentId(studentId);
+            approvalMapper.insert(approval);
+        } else {
+            // 更新操作
+            approvalMapper.updateApprovalInfo(approval);
+        }
+        return "SUCCESS";
+    }
+
+    @ResponseBody
+    @RequestMapping("/get-approval")
+    public String getApproval(HttpServletRequest request, String id) {
+        Approval approval = approvalMapper.getById(id);
+        return JSON.toJSONString(approval);
     }
 
     @ResponseBody
@@ -97,6 +134,16 @@ public class StudentController {
         return "SUCCESS";
     }
 
-
+    /**
+     * 得到两个日志的差值
+     * @param startTime
+     * @param endTime
+     * @return
+     * @throws ParseException
+     */
+    private int getDays(Date startTime, Date endTime) throws ParseException {
+        long betweenDate = (endTime.getTime() - startTime.getTime())/(60*60*24*1000);
+        return (int) betweenDate;
+    }
 
 }

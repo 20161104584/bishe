@@ -36,14 +36,14 @@
                         <li>
                             <a rel="nofollow" class="dropdown-item">
                                 <div class="notification">
-                                    <div class="notification-content" onclick="openRegister()"><i class="fa fa-user "></i>My Profile</div>
+                                    <div class="notification-content" onclick="openRegister()"><i class="fa fa-user "></i>个人信息</div>
                                 </div>
                             </a>
                         </li>
                         <li>
                             <a rel="nofollow" class="dropdown-item">
                                 <div class="notification">
-                                    <div class="notification-content" onclick="logout()"><i class="fa fa-power-off"></i>Logout</div>
+                                    <div class="notification-content" onclick="logout()"><i class="fa fa-power-off"></i>退出</div>
                                 </div>
                             </a>
                         </li>
@@ -64,7 +64,7 @@
         </div>
         <hr>
         <ul class="list-unstyled">
-            <li> <a href="chart.html"> <i class="fa fa-bar-chart"></i>请假列表 </a></li>
+            <li> <a onclick="openUrl('/leave/student/approval-list')"> <i class="fa fa-bar-chart"></i>请假列表 </a></li>
         </ul>
     </nav>
 
@@ -226,6 +226,10 @@
                 alert("操作失败，请重新操作！");
             }
         });
+    }
+
+    function openUrl(url) {
+        $("#mainFrame").attr("src", url);
     }
 </script>
 </body>

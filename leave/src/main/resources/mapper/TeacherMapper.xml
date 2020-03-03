@@ -8,4 +8,11 @@
         <result column="password" property="password"/>
     </resultMap>
 
+    <select id="getAllTeacher" resultMap="BaseResultMap">
+        select
+        *
+        from
+        t_teacher
+    </select>
+
 </mapper>

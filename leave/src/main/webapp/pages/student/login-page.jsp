@@ -25,17 +25,17 @@
                     <h3 class="text-center" style="color:#2196f3">师范大学请假系统-学生登录</h3><br>
                     <form>
                         <div class="form-group">
-                            <label for="number">Number</label>
-                            <input type="text" class="form-control" id="number" placeholder="Enter Number">
+                            <label for="number">学号</label>
+                            <input type="text" class="form-control" id="number" placeholder="请输入学号">
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <input class="form-control" type="password" placeholder="Enter Password" id="password">
+                            <label for="password">密码</label>
+                            <input class="form-control" type="password" placeholder="请输入密码" id="password">
                         </div>
                         <div class="form-group" style="float:right">
-                            <a style="font-size:12px;color:#2196f3;" onclick="openRegister()">Register</a>
+                            <a style="font-size:12px;color:#2196f3;" onclick="openRegister()">注册申请</a>
                         </div>
-                        <button class="btn btn-general btn-blue" type="button" onclick="login()"><i fa fa-right-arrow></i>Login</button>
+                        <button class="btn btn-general btn-blue" type="button" onclick="login()"><i fa fa-right-arrow></i>登录</button>
                     </form>
                 </div>
             </div>
