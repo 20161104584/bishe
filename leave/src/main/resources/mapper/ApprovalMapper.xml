@@ -58,4 +58,12 @@
         where app.id = #{id}
     </select>
 
+    <update id="writeOf">
+        update
+        t_approval
+        set
+        status = 3, result = null
+        where id = #{id}
+    </update>
+
 </mapper>

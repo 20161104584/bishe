@@ -44,8 +44,8 @@
         </thead>
         <tbody>
         <c:forEach items="${approvalList}" var="arr" varStatus="status">
-            <c:if test="${status.index / 2 == 0}"><tr ></c:if>
-            <c:if test="${status.index / 2 != 0}"><tr class="table-warning"></c:if>
+            <c:if test="${arr.days < 3}"><tr class="table-warning"></c:if>
+            <c:if test="${arr.days >= 3}"><tr class="table-danger"></c:if>
             <td>${status.index + 1}</td>
             <td><fmt:formatDate value="${arr.startTime}" pattern="yyyy-MM-dd"/></td>
             <td><fmt:formatDate value="${arr.endTime}" pattern="yyyy-MM-dd"/></td>
@@ -67,7 +67,7 @@
             </td>
             <td>
                 <c:if test="${arr.status == 0}"><button type="button" onclick="editApproval('${arr.id}')" class="btn btn-sm btn-info">编辑</button></c:if>
-                <c:if test="${arr.status == 2}"><button type="button" onclick="editApproval('${arr.id}')" class="btn btn-sm btn-danger">核销</button></c:if>
+                <c:if test="${arr.status == 2}"><button type="button" onclick="writeOff('${arr.id}')" class="btn btn-sm btn-danger">核销</button></c:if>
             </td>
         </tr>
         </c:forEach>
@@ -191,6 +191,28 @@
             success: function(ret) {
                 if (ret == "SUCCESS") {
                     alert("保存成功");
+                    window.location.reload();
+                } else {
+                    alert(ret);
+                }
+            },
+            error: function(res){
+                alert("操作失败，请重新操作！");
+            }
+        });
+    }
+
+    function writeOff(obj) {
+        $.ajax({
+            url: "/leave/student/write-off",
+            type: "POST",
+            dataType: "text",
+            data: {
+                id: obj
+            },
+            success: function(ret) {
+                if (ret == "SUCCESS") {
+                    alert("核销申请成功");
                     window.location.reload();
                 } else {
                     alert(ret);

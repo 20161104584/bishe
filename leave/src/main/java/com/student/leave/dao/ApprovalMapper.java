@@ -14,4 +14,6 @@ public interface ApprovalMapper {
     void updateApprovalInfo(Approval approval);
 
     Approval getById(String id);
+
+    void writeOf(String id);
 }

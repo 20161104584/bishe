@@ -100,6 +100,14 @@ public class StudentController {
     }
 
     @ResponseBody
+    @RequestMapping("/write-off")
+    public String writeOff(String id) {
+        approvalMapper.writeOf(id);
+        return "SUCCESS";
+    }
+
+
+    @ResponseBody
     @RequestMapping("/get-approval")
     public String getApproval(HttpServletRequest request, String id) {
         Approval approval = approvalMapper.getById(id);
