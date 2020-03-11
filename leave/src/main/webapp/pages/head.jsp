@@ -163,7 +163,7 @@
                     <div class="picScroll-left clearfix">
                         <div class="bd aos-init" data-aos="fade-right">
                             <ul class="picList">
-                                <li>
+                                <li onclick="window.open('http://localhost:8080/leave/student/main-page')">
                                     <div class="pic" id="pic">
                                         <a>
                                             <img src="http://www.imnu.edu.cn/images/19/09/25/1tnfkgnnx9/kstdt3.png">
@@ -173,7 +173,7 @@
                                         <a>学生登录</a>
                                     </div>
                                 </li>
-                                <li>
+                                <li onclick="window.open('http://localhost:8080/leave/teacher/main-page')">
                                     <div class="pic" id="pic">
                                         <a>
                                             <img src="http://www.imnu.edu.cn/images/19/09/25/1tnfkgnnx9/kstdt4.png">

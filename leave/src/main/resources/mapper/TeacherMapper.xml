@@ -15,4 +15,20 @@
         t_teacher
     </select>
 
+    <select id="getByAccount" resultMap="BaseResultMap">
+        select
+        *
+        from
+        t_teacher
+        where account = #{account}
+    </select>
+
+    <select id="getById" resultMap="BaseResultMap">
+        select
+        *
+        from
+        t_teacher
+        where id = #{id}
+    </select>
+
 </mapper>

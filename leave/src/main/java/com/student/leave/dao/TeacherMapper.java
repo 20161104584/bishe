@@ -8,4 +8,8 @@ import java.util.List;
 @Mapper
 public interface TeacherMapper {
     List<Teacher> getAllTeacher();
+
+    Teacher getByAccount(String account);
+
+    Teacher getById(String teacherId);
 }

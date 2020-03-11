@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>学生首页 </title>
+    <title>学生首页</title>
     <link rel="stylesheet" href="/leave/statics/css/bootstrap.min.css">
     <link rel="stylesheet" href="/leave/statics/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/leave/statics/css/font-icon-style.css">
