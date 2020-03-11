@@ -24,7 +24,7 @@
         <div class="container-fluid ">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
                 <div class="navbar-header">
-                    <span>内蒙古师范大学请假系统</span>
+                    <h5>内蒙古师范大学请假系统</h5>
                 </div>
             </div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
@@ -59,7 +59,7 @@
         <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="/leave/head/upload/${student.avatar}" class="img-fluid rounded-circle" style="height: 50px; width: 50px;"></div>
             <div class="title">
-                <h1 class="h4">${student.name}</h1>
+                <h6>${student.name}</h6>
             </div>
         </div>
         <hr>

@@ -24,7 +24,7 @@
         <div class="container-fluid ">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
                 <div class="navbar-header">
-                    <span>内蒙古师范大学请假系统</span>
+                    <h5>内蒙古师范大学请假系统</h5>
                 </div>
             </div>
             <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
@@ -52,17 +52,19 @@
         <div class="sidebar-header d-flex align-items-center">
             <div class="avatar"><img src="/leave/head/upload/avatar-3.jpg" class="img-fluid rounded-circle" style="height: 50px; width: 50px;"></div>
             <div class="title">
-                <h1 class="h4">${teacher.name}</h1>
+                <h6>${teacher.name}教师</h6>
             </div>
         </div>
         <hr>
         <ul class="list-unstyled">
-            <li> <a onclick="openUrl('/leave/student/approval-list')"> <i class="fa fa-bar-chart"></i>请假列表 </a></li>
+            <li> <a onclick="openUrl('/leave/teacher/approval-list')"> <i class="fa fa-bar-chart"></i>请假审批 </a></li>
+            <li> <a onclick="openUrl('/leave/teacher/approval-list')"> <i class="fa fa-map-o"></i>已审批 </a></li>
+            <li> <a onclick="openUrl('/leave/teacher/approval-list')"> <i class="fa fa-file-o"></i>请假统计 </a></li>
         </ul>
     </nav>
 
         <iframe id="mainFrame" name="mainFrame" frameborder="no"
-                scrolling="no" src="/leave/student/approval-list"></iframe>
+                scrolling="no" src="/leave/teacher/approval-list"></iframe>
 </div>
 
 <script src="/leave/statics/js/jquery.min.js"></script>

@@ -2,6 +2,7 @@ package com.student.leave.dao;
 
 import com.student.leave.model.Approval;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -16,4 +17,12 @@ public interface ApprovalMapper {
     Approval getById(String id);
 
     void writeOf(String id);
+
+    List<Approval> getByTeacherCheck(String teacherId);
+
+    void teacherAgree(String id);
+
+    void teacherNextStep(@Param("id") String id, @Param("leaderId") String leaderId);
+
+    void teacherRefuse(@Param("id") String id, @Param("reason") String reason);
 }

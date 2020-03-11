@@ -16,6 +16,7 @@ public class Approval {
     private Date createTime;
     private Date updateTime;
     private String result;
+    private String studentNumber;
     private String studentName;
     private String teacherName;
     private String leaderName;
@@ -138,5 +139,13 @@ public class Approval {
 
     public void setLeaderName(String leaderName) {
         this.leaderName = leaderName;
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber;
     }
 }
