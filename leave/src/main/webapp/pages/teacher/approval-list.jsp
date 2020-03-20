@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>学生首页 </title>
+    <title>教师首页</title>
     <link rel="stylesheet" href="/leave/statics/js/datatables/css/dataTables.bootstrap4.css">
     <link rel="stylesheet" href="/leave/statics/css/bootstrap.min.css">
     <link rel="stylesheet" href="/leave/statics/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -70,6 +70,10 @@
                     <button type="button" onclick="approvalAgree('${arr.id}', ${arr.days})" class="btn btn-sm btn-info">同意</button>
                     <button type="button" onclick="approvalRefuse('${arr.id}')" class="btn btn-sm btn-danger">拒绝</button>
                 </c:if>
+                <c:if test="${arr.status == 3}">
+                    <button type="button" onclick="writeOffAgree('${arr.id}')" class="btn btn-sm btn-info">同意</button>
+                    <button type="button" onclick="writeOffRefuse('${arr.id}')" class="btn btn-sm btn-danger">拒绝</button>
+                </c:if>
             </td>
         </tr>
         </c:forEach>
@@ -132,6 +136,34 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="writeOffRefuseModal" style="z-index: 10000;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="writeOffRefuseModalLabel">拒绝说明</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="leaderId" class="col-form-label">拒绝理由:</label>
+                        <textarea id="writerOffReason" cols="3" class="form-control"></textarea>
+                    </div>
+                </form>
+                <input type="hidden" id="writeOffRefuseApprovalId"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="writeOffRefuseSave()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="/leave/statics/js/jquery.min.js"></script>
 <script src="/leave/statics/js/popper/popper.min.js"></script>
@@ -220,6 +252,64 @@
             dataType: "text",
             data: {
                 id: approvalId,
+                reason: reason
+            },
+            success: function(ret) {
+                if (ret == "SUCCESS") {
+                    alert("拒绝操作成功");
+                    window.location.reload();
+                } else {
+                    alert("拒绝操作失败");
+                }
+            },
+            error: function(res){
+                alert("操作失败，请重新操作！");
+            }
+        });
+    }
+
+    function writeOffAgree(obj) {
+        // 直接审核状态改为：2-待核销
+        $.ajax({
+            url: "/leave/teacher/write-off-agree",
+            type: "POST",
+            dataType: "text",
+            data: {
+                id: obj
+            },
+            success: function(ret) {
+                if (ret == "SUCCESS") {
+                    alert("核销审核成功");
+                    window.location.reload();
+                } else {
+                    alert("核销审核失败");
+                }
+            },
+            error: function(res){
+                alert("操作失败，请重新操作！");
+            }
+        });
+    }
+
+    function writeOffRefuse(obj) {
+        $("#writeOffRefuseApprovalId").val(obj);
+        // 打开弹出框，选择具体的院长信息
+        $('#writeOffRefuseModal').modal("show");
+    }
+
+    function writeOffRefuseSave() {
+        var id = $("#writeOffRefuseApprovalId").val();
+        var reason = $("#writerOffReason").val();
+        if (reason == "") {
+            alert("请填写拒绝理由");
+            return;
+        }
+        $.ajax({
+            url: "/leave/teacher/write-off-refuse",
+            type: "POST",
+            dataType: "text",
+            data: {
+                id: id,
                 reason: reason
             },
             success: function(ret) {

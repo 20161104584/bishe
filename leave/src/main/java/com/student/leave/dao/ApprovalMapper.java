@@ -25,4 +25,10 @@ public interface ApprovalMapper {
     void teacherNextStep(@Param("id") String id, @Param("leaderId") String leaderId);
 
     void teacherRefuse(@Param("id") String id, @Param("reason") String reason);
+
+    List<Approval> getByTeacherFinish(String teacherId);
+
+    void writeOffAgree(String id);
+
+    void writeOffRefuse(@Param("id") String id, @Param("reason") String reason);
 }

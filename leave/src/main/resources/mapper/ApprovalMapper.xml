@@ -105,4 +105,34 @@
         where id = #{id}
     </update>
 
+    <select id="getByTeacherFinish" resultMap="BaseResultMap">
+        select
+        app.*,
+        tea.name teacher_name,
+        lea.name leader_name,
+        stu.name student_name,
+        stu.num student_number
+        from t_approval app
+        left join t_teacher tea on app.teacher_id = tea.id
+        left join t_leader lea on app.leader_id = lea.id
+        left join t_student stu on app.student_id = stu.id
+        where app.teacher_id = #{teacherId}
+        and app.status in (-4,-2,-1,4)
+    </select>
+
+    <update id="writeOffAgree">
+        update
+        t_approval
+        set status = 4
+        where id = #{id}
+    </update>
+
+    <update id="writeOffRefuse">
+        update
+        t_approval
+        set status = -3,
+        result = #{reason}
+        where id = #{id}
+    </update>
+
 </mapper>

@@ -67,7 +67,7 @@
             </td>
             <td>
                 <c:if test="${arr.status == 0}"><button type="button" onclick="editApproval('${arr.id}')" class="btn btn-sm btn-info">编辑</button></c:if>
-                <c:if test="${arr.status == 2}"><button type="button" onclick="writeOff('${arr.id}')" class="btn btn-sm btn-danger">核销</button></c:if>
+                <c:if test="${arr.status == 2 || arr.status == -3}"><button type="button" onclick="writeOff('${arr.id}')" class="btn btn-sm btn-danger">核销</button></c:if>
             </td>
         </tr>
         </c:forEach>

@@ -104,4 +104,28 @@ public class TeacherController {
         return "SUCCESS";
     }
 
+    @RequestMapping("/finish-list")
+    public String finishList(HttpServletRequest request) {
+        String teacherId = (String) request.getSession().getAttribute("teacher_id");
+        // 获得个人所有的请假数据
+        List<Approval> approvalList = approvalMapper.getByTeacherFinish(teacherId);
+        request.setAttribute("approvalList", approvalList);
+        return "teacher/finish-list";
+    }
+
+    @ResponseBody
+    @RequestMapping("/write-off-agree")
+    public String writeOffAgree(String id) {
+        // 核销成功
+        approvalMapper.writeOffAgree(id);
+        return "SUCCESS";
+    }
+
+    @ResponseBody
+    @RequestMapping("/write-off-refuse")
+    public String writeOffRefuse(String id, String reason) {
+        approvalMapper.writeOffRefuse(id, reason);
+        return "SUCCESS";
+    }
+
 }
