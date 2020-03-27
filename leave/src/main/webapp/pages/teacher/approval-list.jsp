@@ -44,13 +44,13 @@
         </thead>
         <tbody>
         <c:forEach items="${approvalList}" var="arr" varStatus="status">
-            <c:if test="${arr.days < 3}"><tr class="table-warning"></c:if>
+            <c:if test="${arr.days < 3 || arr.hadDays > 4}"><tr class="table-warning"></c:if>
             <c:if test="${arr.days >= 3}"><tr class="table-danger"></c:if>
             <td>${status.index + 1}</td>
             <td>${arr.studentNumber}</td>
             <td>${arr.studentName}</td>
             <td><fmt:formatDate value="${arr.startTime}" pattern="yyyy-MM-dd"/></td>
-            <td>${arr.days}</td>
+            <td>${arr.days}（${arr.hadDays}）</td>
             <td>${arr.reason}</td>
             <td>${arr.leaderName}</td>
             <td>${arr.result}</td>
@@ -62,7 +62,7 @@
                 <c:if test="${arr.status == 0}">待老师审批</c:if>
                 <c:if test="${arr.status == 1}">待院长审批</c:if>
                 <c:if test="${arr.status == 2}">待核销</c:if>
-                <c:if test="${arr.status == 3}">待老师核销确认</c:if>
+                <c:if test="${arr.status == 3}">待核销确认</c:if>
                 <c:if test="${arr.status == 4}">已完成</c:if>
             </td>
             <td>

@@ -135,4 +135,22 @@
         where id = #{id}
     </update>
 
+    <select id="getSum" resultType="java.lang.Integer">
+        select
+        sum(days)
+        from
+        t_approval
+        where student_id = #{studentId}
+        and status = 4
+    </select>
+
+    <select id="getAllStudentByTeacherId" resultType="java.lang.String">
+        select
+        student_id
+        from
+        t_approval
+        where teacher_id = #{teacherId}
+        group by student_id
+    </select>
+
 </mapper>

@@ -31,4 +31,9 @@ public interface ApprovalMapper {
     void writeOffAgree(String id);
 
     void writeOffRefuse(@Param("id") String id, @Param("reason") String reason);
+
+    Integer getSum(@Param("studentId") String studentId);
+
+    List<String> getAllStudentByTeacherId(String teacherId);
+
 }

@@ -62,7 +62,7 @@
                 <c:if test="${arr.status == 0}">待老师审批</c:if>
                 <c:if test="${arr.status == 1}">待院长审批</c:if>
                 <c:if test="${arr.status == 2}">待核销</c:if>
-                <c:if test="${arr.status == 3}">待老师核销确认</c:if>
+                <c:if test="${arr.status == 3}">待核销确认</c:if>
                 <c:if test="${arr.status == 4}">已完成</c:if>
             </td>
             <td>

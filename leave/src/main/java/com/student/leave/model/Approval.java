@@ -20,6 +20,7 @@ public class Approval {
     private String studentName;
     private String teacherName;
     private String leaderName;
+    private Integer hadDays;
 
     public String getId() {
         return id;
@@ -147,5 +148,13 @@ public class Approval {
 
     public void setStudentNumber(String studentNumber) {
         this.studentNumber = studentNumber;
+    }
+
+    public Integer getHadDays() {
+        return hadDays;
+    }
+
+    public void setHadDays(Integer hadDays) {
+        this.hadDays = hadDays;
     }
 }

@@ -59,7 +59,7 @@
         <ul class="list-unstyled">
             <li> <a onclick="openUrl('/leave/teacher/approval-list')"> <i class="fa fa-bar-chart"></i>请假审批 </a></li>
             <li> <a onclick="openUrl('/leave/teacher/finish-list')"> <i class="fa fa-map-o"></i>已审批 </a></li>
-            <li> <a onclick="openUrl('/leave/teacher/approval-list')"> <i class="fa fa-file-o"></i>请假统计 </a></li>
+            <li> <a onclick="openUrl('/leave/teacher/statics-list')"> <i class="fa fa-file-o"></i>请假统计 </a></li>
         </ul>
     </nav>
 
